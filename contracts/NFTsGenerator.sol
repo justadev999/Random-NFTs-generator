@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.7;
 
-contract NftsMarketplace {
+contract NFTsGenerator {
     address public owner;
     uint256 startingPrice = 0.02 ether;
     uint256 nftId = 6;
