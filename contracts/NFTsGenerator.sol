@@ -15,6 +15,8 @@ contract NFTsGenerator {
 
     NFT[] public nftsCollection;
 
+    event NewNft(string name, uint256 price, uint256 id);
+
     //CREATE THE NFT
     function createNft(
         string memory _name,
