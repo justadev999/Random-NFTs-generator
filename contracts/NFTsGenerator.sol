@@ -22,6 +22,14 @@ contract NFTsGenerator {
     //Emitting NFT's creation event needed on the FE
     event NewNft(string name, uint256 price, uint256 id);
 
+    modifier OnlyOne() {
+        require(
+            ownerNftsCollection[msg.sender] == 0,
+            "Nope, you already have one"
+        );
+        _;
+    }
+
     //CREATE THE NFT
     function createNft(
         string memory _name,
@@ -46,7 +54,10 @@ contract NFTsGenerator {
         return randomId % nftModuleId;
     }
 
-    function generateRndomNft(string memory _name, uint256 _price) public {
+    function generateRndomNft(string memory _name, uint256 _price)
+        public
+        OnlyOne
+    {
         uint256 randomId = _generateRandomId(_name);
         createNft(_name, _price, randomId);
     }
